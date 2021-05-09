@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #p {
+        line-height:10;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4" >PhotoBoom</h1>
+    <p id="p">Welcome to your favourite website.</p>
+    <a href='@Url.Action("MyPhotos", "Photo")'>My Photos</a>
+</div>

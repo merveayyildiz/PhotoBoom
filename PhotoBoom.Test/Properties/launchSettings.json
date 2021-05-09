@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PhotoBoom.Test": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

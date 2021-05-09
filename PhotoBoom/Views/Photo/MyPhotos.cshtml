@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PhotoBoom.Models.Concrete.Photo>
+
+@{
+    ViewData["Title"] = "MyPhotos";
+}
+
+<h3 align="center">My Photos</h3>
+<br />
+<br />
+<br />
+@if (ViewBag.NoPhotos != null)
+{
+    @ViewBag.NoPhotos
+
+}
+else
+{
+    <div align="center">
+
+        @foreach (var item in Model)
+        {
+            <a href="/Photo/Details/@item.Id" style="margin:10px">
+                <img src="@("~/img/"+item.ImageName)" asp-append-version="true" width="250px" height="150px" title="Click For Details" />
+            </a>
+        }
+    </div>
+}
+<br />
+<br />
+<div style="text-align:center">
+    <a asp-action="AddPhoto" style="text-align:center">Add Photo</a>
+</div>
+
