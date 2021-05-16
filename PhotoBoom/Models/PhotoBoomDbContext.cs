@@ -19,5 +19,6 @@ namespace PhotoBoom.Models
     {
     }
     public virtual DbSet<Photo> Photos { get; set; }
+    public virtual DbSet<Tag> Tags { get; set; }
   }
 }

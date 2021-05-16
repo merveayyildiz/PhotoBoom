@@ -23,5 +23,8 @@ namespace PhotoBoom.Models.Repository
     IQueryable<T> All<T>() where T : Entity;
 
     T FirstOrDefault<T>(Expression<Func<T, bool>> where) where T : Entity;
+    IQueryable<T> WhereInclude<T>(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] includes) where T : Entity;
+
+    T FirstOrDefaultInclude<T>(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] includes) where T : Entity;
   }
 }

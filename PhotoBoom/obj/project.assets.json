@@ -8670,11 +8670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
+      "projectUniqueName": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
       "projectName": "PhotoBoom",
-      "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
+      "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
       "packagesPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\obj\\",
+      "outputPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

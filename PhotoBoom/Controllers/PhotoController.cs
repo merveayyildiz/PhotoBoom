@@ -41,7 +41,7 @@ namespace PhotoBoom.Controllers
     }
 
     [HttpPost]
-    public IActionResult AddPhoto([Bind("Id,Title,Tags,ImageFile")] Photo photo)
+    public IActionResult AddPhoto(Photo photo)
     {
       if (ModelState.IsValid)
       {
@@ -58,6 +58,20 @@ namespace PhotoBoom.Controllers
         //Insert record
         _unitOfWork.Add(photo);
         _unitOfWork.Save();
+
+        //Insert tags to tag table
+        foreach (var item in photo.TagString.Split(','))
+        {
+          Tag tag = new Tag()
+          {
+            Name = item,
+            PhotoId = photo.Id,
+            Photo = photo
+          };
+          _unitOfWork.Add(tag);
+          _unitOfWork.Save();
+          photo.Tags.Add(tag);
+        }
         return RedirectToAction(nameof(MyPhotos));
       }
       return View(photo);
@@ -65,29 +79,23 @@ namespace PhotoBoom.Controllers
 
     public IActionResult Details(int id)
     {
-      var photo = _unitOfWork.FirstOrDefault<Photo>(x => x.Id == id);
-      photo.Tags = stringToTagsString(photo.Tags);
+      var photo = _unitOfWork.FirstOrDefaultInclude<Photo>(x =>
+      x.Id == id ,x=>x.Tags);
+      //for diese symbol view 
+      foreach (var item in photo.Tags)
+      {
+        if (item == photo.Tags.Last())
+          item.Name= "#" + item.Name;
+        else
+          item.Name = "#" + item.Name + ", ";
+      }
       return View(photo);
     }
 
-    public string stringToTagsString(string tags)
-    {
-      string[] tagsArray = tags.Split(',');
-      string tagStr = string.Empty;
-      foreach (var item in tagsArray)
-      {
-        if (item == tagsArray.Last())
-          tagStr += "#" + item;
-        else
-          tagStr += "#" + item + ", ";
-      }
-      tags = tagStr;
-      return tags;
-    }
-
+    
     public IActionResult Delete(int id)
     {
-       var photo = _unitOfWork.FirstOrDefault<Photo>(x => x.Id == id);
+      var photo = _unitOfWork.FirstOrDefault<Photo>(x => x.Id == id);
 
       //delete image from wwwroot/img
       var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "img", photo.ImageName);
@@ -97,7 +105,8 @@ namespace PhotoBoom.Controllers
       _unitOfWork.Delete(photo);
       _unitOfWork.Save();
       return RedirectToAction(nameof(MyPhotos));
-    
+
     }
+   
   }
 }

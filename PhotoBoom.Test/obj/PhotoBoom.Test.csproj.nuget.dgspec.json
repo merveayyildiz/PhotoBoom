@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj": {}
+    "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj": {
+    "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj",
+        "projectUniqueName": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj",
         "projectName": "PhotoBoom.Test",
-        "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj",
+        "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom.Test\\PhotoBoom.Test.csproj",
         "packagesPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom.Test\\obj\\",
+        "outputPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj": {
-                "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj"
+              "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj": {
+                "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj"
               }
             }
           }
@@ -50,6 +50,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
             },
             "NUnit": {
               "target": "Package",
@@ -82,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj": {
+    "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
+        "projectUniqueName": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
         "projectName": "PhotoBoom",
-        "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
+        "projectPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\PhotoBoom.csproj",
         "packagesPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\source\\repos\\PhotoBoom\\PhotoBoom\\obj\\",
+        "outputPath": "C:\\Users\\MERVE-AYYILDIZ-PC\\Documents\\PhotoBoom\\PhotoBoom\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

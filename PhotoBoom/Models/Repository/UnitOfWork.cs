@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhotoBoom.Models.Base;
+using PhotoBoom.Models.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,14 @@ namespace PhotoBoom.Models.Repository
       return Query<T>().FirstOrDefault(where);
     }
 
+    public T FirstOrDefaultInclude<T>(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] includes) where T : Entity
+    {
+      if (includes.Length > 0)
+        return Query<T>().IncludeMultiple(includes).FirstOrDefault(where);
+
+      return Query<T>().FirstOrDefault(where);
+    }
+
     public DbSet<T> Query<T>() where T : Entity
     {
       return _dbContext.Set<T>();
@@ -53,6 +62,11 @@ namespace PhotoBoom.Models.Repository
       _dbContext.Update(entity);
 
       return true;
+    }
+
+    public IQueryable<T> WhereInclude<T>(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] includes) where T : Entity
+    {
+      return Query<T>().IncludeMultiple(includes).Where(where);
     }
   }
 }

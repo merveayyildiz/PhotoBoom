@@ -3,6 +3,13 @@
 @{
     ViewData["Title"] = "MyPhotos";
 }
+<style>
+
+    #center {
+        text-align: center;
+    }
+</style>
+
 
 <h3 align="center">My Photos</h3>
 <br />
@@ -10,8 +17,8 @@
 <br />
 @if (ViewBag.NoPhotos != null)
 {
-    @ViewBag.NoPhotos
 
+    <div id="center">@ViewBag.NoPhotos</div>
 }
 else
 {
@@ -30,4 +37,5 @@ else
 <div style="text-align:center">
     <a asp-action="AddPhoto" style="text-align:center">Add Photo</a>
 </div>
+
 

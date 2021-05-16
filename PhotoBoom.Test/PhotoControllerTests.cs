@@ -1,72 +1,73 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using NUnit.Framework;
 using PhotoBoom.Controllers;
 using PhotoBoom.Models.Concrete;
 using PhotoBoom.Models.Repository;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PhotoBoom.Test
 {
   public class PhotoControllerTests
   {
-    private readonly IWebHostEnvironment _hostEnvironment;
-    private readonly IUnitOfWork _unitOfWork;
-    public PhotoControllerTests(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+    private readonly Mock<IUnitOfWork> _mockRepo;
+    private readonly Mock<IWebHostEnvironment> web;
+    private readonly PhotoController _controller;
+    public PhotoControllerTests()
     {
-      _unitOfWork = unitOfWork;
-      _hostEnvironment = hostEnvironment;
-    }
-
-    [SetUp]
-    public void Setup()
-    {
+      _mockRepo = new Mock<IUnitOfWork>();
+      web = new Mock<IWebHostEnvironment>();
+      _controller = new PhotoController(_mockRepo.Object, web.Object);
     }
 
     [Test]
     public void MyPhotosTest()
     {
-      PhotoController photoController = new PhotoController(_unitOfWork, _hostEnvironment);
+      List<Photo> myPhotos = null;
+      var mockRepository = new Mock<IUnitOfWork>();
+      mockRepository.Setup(m => m.All<Photo>()).Returns(myPhotos.AsQueryable()).Verifiable();
+      PhotoController photoController = new PhotoController(mockRepository.Object, web.Object);
       ViewResult result = photoController.MyPhotos() as ViewResult;
       Assert.IsNotNull(result);
+      _mockRepo.Setup(repo => repo.All<Photo>())
+        .Returns(new List<Photo>() { new Photo(), new Photo() }.AsQueryable());
+      var resulttt = _controller.MyPhotos();
+      Assert.IsNotNull(resulttt);
     }
 
-    [Test]
-    public void stringToTagsStringTest()
-    {
-      PhotoController photoController = new PhotoController(_unitOfWork, _hostEnvironment);
-      var expStr = "deneme,deneme";
-      var result = photoController.stringToTagsString(expStr);
-      Assert.AreEqual("#deneme, #deneme",result);
-    }
 
     [Test]
     public void DetailsTest()
     {
-      PhotoController photoController = new PhotoController(_unitOfWork, _hostEnvironment);
-      ViewResult result = photoController.Details(11) as ViewResult;
-      Assert.AreEqual("Details", result.ViewName);
+      Photo photo = new Photo() { Id = 15, Title = "Test", ImageName = "hourglass05082021.svg" };
+      var mockRepository = new Mock<IUnitOfWork>();
+      mockRepository.Setup(x => x.FirstOrDefault<Photo>(x => x.Id == photo.Id)).Returns(photo).Verifiable();
+      PhotoController photoController = new PhotoController(mockRepository.Object, web.Object);
+      ViewResult result = photoController.Details(photo.Id) as ViewResult;
       Assert.IsNotNull(result);
     }
 
     [Test]
     public void DeleteTest()
     {
-      PhotoController photoController = new PhotoController(_unitOfWork, _hostEnvironment);
+      var mockRepository = new Mock<IUnitOfWork>();
+      PhotoController photoController = new PhotoController(mockRepository.Object, web.Object);
       ViewResult result = photoController.Delete(18) as ViewResult;
-      Assert.AreEqual("Delete", result.ViewName);
       Assert.IsNotNull(result);
     }
 
     [Test]
     public void AddPhotoTest()
     {
-      PhotoController photoController = new PhotoController(_unitOfWork, _hostEnvironment);
+      var mockRepository = new Mock<IUnitOfWork>();
+      PhotoController photoController = new PhotoController(mockRepository.Object, web.Object);
       Photo photo = new Photo
       {
         Id = 1212,
         Title = "test Title",
-        Tags="tast Tag",
-        ImageName="test ImgName"
+        ImageName = "test ImgName"
       };
       ViewResult result = photoController.AddPhoto(photo) as ViewResult;
       Assert.IsNotNull(result);

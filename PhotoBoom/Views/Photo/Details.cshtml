@@ -20,7 +20,12 @@
                 @Html.DisplayFor(model => model.Title)
             </dd>
             <dd class="col-sm-10">
-                Tags: @Html.DisplayFor(model => model.Tags)
+                Tags: 
+                @foreach (var item in Model.Tags)
+                    {
+                       @Html.DisplayFor(modelItem => item.Name)
+                           
+                    }
             </dd>
             <dd class="col-sm-10" style="line-height:20">
                 <img src="@("~/img/"+Model.ImageName)" asp-append-version="true" width="250px" height="250px" />

@@ -18,9 +18,7 @@ namespace PhotoBoom.Models.Concrete
     [Required]
     [Column(TypeName = "nvarchar(50)")]
     public string Title { get; set; }
-
-    [Required]
-    public string Tags { get; set; }
+    
     
     [Column(TypeName = "nvarchar(100)")]
     [DisplayName("Image Name")]
@@ -30,5 +28,10 @@ namespace PhotoBoom.Models.Concrete
     [NotMapped]
     [DisplayName("Upload File")]
     public IFormFile ImageFile { get; set; }
+
+    [Required]
+    public string TagString { get; set; }
+
+    public virtual List<Tag> Tags { get; set; }
   }
 }
